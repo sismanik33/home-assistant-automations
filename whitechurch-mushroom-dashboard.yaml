@@ -1,0 +1,204 @@
+
+views:
+  - title: Home
+    cards:
+      - type: custom:mushroom-climate-card
+        entity: climate.my_ecobee
+        name: Ecobee
+        icon: mdi:home-thermometer-outline
+        fill_container: true
+        primary_info: name
+        hvac_modes:
+          - heat_cool
+          - heat
+          - cool
+          - 'off'
+        show_temperature_control: true
+        collapsible_controls: true
+        tap_action:
+          action: more-info
+        layout: vertical
+      - type: horizontal-stack
+        cards:
+          - features:
+              - type: light-brightness
+            type: tile
+            entity: light.in_wall_paddle_dimmer_500s
+            name: Kitchen
+            icon: mdi:faucet-variant
+            color: teal
+            show_entity_picture: false
+          - features:
+              - type: light-brightness
+            type: tile
+            entity: light.dining_room_chandelier
+            name: Dining
+            icon: mdi:table-chair
+            color: light-green
+            show_entity_picture: false
+      - type: horizontal-stack
+        cards:
+          - features:
+              - type: light-brightness
+            type: tile
+            entity: light.living_room_main_lights
+            name: Living Room
+            icon: mdi:sofa-outline
+            color: teal
+            show_entity_picture: false
+          - features:
+              - type: light-brightness
+            type: tile
+            entity: light.in_wall_paddle_dimmer_500s_stairway
+            name: Basement Stairway
+            icon: mdi:stairs
+            color: teal
+            show_entity_picture: false
+      - type: custom:restriction-card
+        restrictions:
+          pin:
+            code: 2114
+        card:
+          type: custom:mushroom-light-card
+          entity: light.master_bedroom_main_lights
+          name: Master
+          icon: mdi:bed
+          show_brightness_control: true
+          use_light_color: true
+      - type: horizontal-stack
+        cards:
+          - type: custom:mushroom-light-card
+            entity: light.home_gym_light
+            name: Gym
+            icon: mdi:weight-lifter
+            use_light_color: false
+            show_brightness_control: true
+            tap_action:
+              action: toggle
+            hold_action:
+              action: navigate
+              navigation_path: gym
+            show_color_control: false
+            primary_info: name
+            secondary_info: state
+            icon_type: icon
+            collapsible_controls: false
+          - type: custom:mushroom-light-card
+            entity: light.office_light
+            icon: mdi:desk
+            name: Office
+            fill_container: false
+            use_light_color: true
+            show_brightness_control: true
+            tap_action:
+              action: toggle
+            hold_action:
+              action: navigate
+              navigation_path: office
+            primary_info: name
+            secondary_info: state
+            icon_type: icon
+      - type: horizontal-stack
+        cards:
+          - type: custom:mushroom-light-card
+            entity: light.family_room_main_lights
+            icon: mdi:theater
+            name: Family Room
+            fill_container: false
+            show_brightness_control: true
+            use_light_color: true
+            collapsible_controls: true
+            tap_action:
+              action: toggle
+          - type: custom:mushroom-light-card
+            entity: light.basement_storage_area_main_lights
+            icon: mdi:archive
+            name: Storage Area
+            fill_container: false
+            show_brightness_control: true
+            use_light_color: true
+            collapsible_controls: true
+            tap_action:
+              action: toggle
+      - type: horizontal-stack
+        cards:
+          - type: custom:mushroom-entity-card
+            entity: >-
+              binary_sensor.z_wave_plus_gold_plated_reliability_garage_door_tilt_sensor_window_door_is_open
+            icon: mdi:garage-variant
+            fill_container: true
+            layout: horizontal
+          - type: custom:mushroom-entity-card
+            entity: >-
+              binary_sensor.z_wave_plus_gold_plated_reliability_garage_door_tilt_sensor_window_door_is_open_2
+            icon: mdi:garage
+            fill_container: true
+            layout: horizontal
+      - type: horizontal-stack
+        cards:
+          - type: custom:mushroom-light-card
+            entity: switch.sean_s_lamp
+            icon: mdi:lamp
+            name: Sean Bedside
+            fill_container: false
+            show_brightness_control: true
+            use_light_color: true
+            collapsible_controls: true
+            tap_action:
+              action: toggle
+          - type: custom:mushroom-light-card
+            entity: switch.mallory_s_lamp
+            icon: mdi:lamp
+            name: Mallory Bedside
+            fill_container: false
+            show_brightness_control: true
+            use_light_color: true
+            collapsible_controls: true
+            tap_action:
+              action: toggle
+      - type: horizontal-stack
+        cards:
+          - type: custom:mushroom-light-card
+            entity: switch.laundry_room_main_lights
+            icon: mdi:washing-machine
+            name: Laundry
+            fill_container: false
+            show_brightness_control: true
+            use_light_color: true
+            collapsible_controls: true
+            tap_action:
+              action: toggle
+      - type: horizontal-stack
+        cards:
+          - type: custom:mushroom-light-card
+            entity: light.exterior_driveway_light
+            fill_container: false
+            name: Driveway
+            icon: mdi:road-variant
+            use_light_color: false
+            show_brightness_control: true
+          - type: custom:mushroom-light-card
+            entity: light.garage_main_lights
+            name: Garage
+            icon: mdi:garage-open-variant
+            show_brightness_control: true
+            fill_container: false
+      - type: tile
+        entity: vacuum.kitchen_roomba
+        name: 1st Floor Roomba
+        icon: mdi:robot-vacuum
+        color: blue-grey
+        features:
+          - type: vacuum-commands
+            commands:
+              - start_pause
+              - stop
+              - locate
+      - type: custom:mushroom-fan-card
+        entity: fan.in_wall_fan_speed_control_500s
+        name: Master Fan
+        icon_animation: true
+        primary_info: name
+        secondary_info: state
+        show_oscillate_control: false
+        show_percentage_control: true
